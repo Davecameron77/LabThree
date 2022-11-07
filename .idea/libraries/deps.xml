@@ -1,0 +1,19 @@
+<component name="libraryTable">
+  <library name="deps">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Downloads/hibernate/commons-collections-3.2.2.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/hibernate/commons-collections4-4.4.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/hibernate/dom4j.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/hibernate/ejb3-persistence.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/hibernate/hibernate-annotations.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/hibernate/hibernate-commons-annotations.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/hibernate/hibernate-core.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/hibernate/javassist.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/hibernate/jta-1.1.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/hibernate/ojdbc11.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/hibernate/slf4j-api-1.6.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
