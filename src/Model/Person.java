@@ -6,20 +6,23 @@ import javax.persistence.*;
 @Table(name = "Person")
 public class Person {
 
+    public Person() {
+
+    }
+
     public Person(String firstName, String lastName, String street, String city, String postalCode, String country) {
         name = new FullName(firstName, lastName);
         homeAddress = new FullAddress(street, city, postalCode, country);
     }
 
     @Id
-    @GeneratedValue
-    @Column(name = "Id")
+    @Column(name = "Uuid", nullable = false, unique = true, length = 11)
     private int id;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "person")
+    @OneToOne(fetch = FetchType.LAZY)
     private FullName name;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "person")
+    @OneToOne(fetch = FetchType.LAZY)
     private FullAddress homeAddress;
 
     //region getter/setter

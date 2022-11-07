@@ -8,12 +8,14 @@ import java.util.UUID;
 @Table(name = "Employee")
 public class Employee extends  Person {
 
+    public Employee() {
+        super();
+    }
+
     public Employee(String firstName, String lastName, String street, String city, String postalCode, String country) {
         super(firstName, lastName, street, city, postalCode, country);
     }
 
-    @Id
-    @GeneratedValue
     @Column(name = "Id", nullable = false, unique = true, length = 11)
     private UUID id;
 

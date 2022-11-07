@@ -8,6 +8,10 @@ import java.util.Date;
 @Table(name = "Task")
 public class Task {
 
+    public Task() {
+        participants = new ArrayList<>();
+    }
+
     public Task(Date startDatetime, int duration, String serviceType, String status, String comments) {
         this.startDatetime = startDatetime;
         this.duration = duration;
@@ -19,7 +23,8 @@ public class Task {
     }
 
     @Id
-    @Column(name = "Id")
+    @GeneratedValue
+    @Column(name = "Id", nullable = false, unique = true, length = 11)
     private int id;
 
     @Column(name = "Start_Datetime")

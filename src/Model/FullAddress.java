@@ -6,6 +6,10 @@ import javax.persistence.*;
 @Table(name = "Full_Address")
 public class FullAddress {
 
+    public FullAddress() {
+
+    }
+
     public FullAddress(String street, String city, String postalCode, String country) {
         this.street = street;
         this.city = city;
@@ -15,7 +19,7 @@ public class FullAddress {
 
     @Id
     @GeneratedValue
-    @Column(name = "Id")
+    @Column(name = "Id", nullable = false, unique = true, length = 11)
     private int id;
 
     @Column(name = "Street")

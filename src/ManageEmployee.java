@@ -26,9 +26,9 @@ public class ManageEmployee {
       ManageEmployee ME = new ManageEmployee();
 
       /* Add few employee records in database */
-      Integer empID1 = ME.addEmployee(1, "Zara", "Ali", 1000);
-      Integer empID2 = ME.addEmployee(2,"Daisy", "Das", 5000);
-      Integer empID3 = ME.addEmployee(3, "John", "Paul", 10000);
+      Integer empID1 = ME.addEmployee("Zara", "Ali");
+      Integer empID2 = ME.addEmployee("Daisy", "Das");
+      Integer empID3 = ME.addEmployee("John", "Paul");
 
       /* List down all the employees */
       ME.listEmployees();
@@ -44,22 +44,17 @@ public class ManageEmployee {
    }
    
    /* Method to CREATE an employee in the database */
-   public Integer addEmployee(int id, String firstName, String lastName, int salary){
+   public Integer addEmployee(String firstName, String lastName){
       Session session = factory.openSession();
       Transaction tx = null;
       Integer employeeID = null;
       
       try {
          tx = session.beginTransaction();
-
-
-
-//         Employee employee = new Employee();
-//         employee.setId(id);
-//         employee.setFirstName(firstName);
-//         employee.setLastName(lastName);
-//         employee.setSalary(salary);
-//         employeeID = (Integer) session.save(employee);
+         Employee employee = new Employee();
+         employee.setFirstName(firstName);
+         employee.setLastName(lastName);
+         employeeID = (Integer) session.save(employee);
          tx.commit();
       } catch (HibernateException e) {
          if (tx!=null) tx.rollback();
@@ -77,13 +72,12 @@ public class ManageEmployee {
       
       try {
          tx = session.beginTransaction();
-//         List employees = session.createQuery("FROM Employee").list();
-//         for (Object o : employees) {
-//            Employee employee = (Employee) o;
-//            System.out.print("First Name: " + employee.getFirstName());
-//            System.out.print("  Last Name: " + employee.getLastName());
-//            System.out.println("  Salary: " + employee.getSalary());
-//         }
+         List employees = session.createQuery("FROM Employee").list();
+         for (Object o : employees) {
+            Employee employee = (Employee) o;
+            System.out.print("First Name: " + employee.getFirstName());
+            System.out.print("  Last Name: " + employee.getLastName());
+         }
          tx.commit();
       } catch (HibernateException e) {
          if (tx!=null) tx.rollback();
@@ -100,8 +94,7 @@ public class ManageEmployee {
       
       try {
          tx = session.beginTransaction();
-         Employee employee = (Employee)session.get(Employee.class, EmployeeID); 
-//         employee.setSalary( salary );
+         Employee employee = (Employee)session.get(Employee.class, EmployeeID);
 		 session.update(employee); 
          tx.commit();
       } catch (HibernateException e) {

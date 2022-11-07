@@ -24,7 +24,11 @@
       <property name = "hibernate.connection.password">
          password
       </property>
-      <mapping class="Employee" />
-      <mapping class="Certificate" />
+      <mapping class="Model.Customer" />
+      <mapping class="Model.Employee" />
+      <mapping class="Model.FullAddress" />
+      <mapping class="Model.FullName" />
+      <mapping class="Model.Person" />
+      <mapping class="Model.Task" />
    </session-factory>
 </hibernate-configuration>

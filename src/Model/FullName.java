@@ -6,6 +6,10 @@ import javax.persistence.*;
 @Table(name = "Full_Name")
 public class FullName {
 
+    public FullName() {
+
+    }
+
     public FullName(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -13,7 +17,7 @@ public class FullName {
 
     @Id
     @GeneratedValue
-    @Column(name = "Id")
+    @Column(name = "Id", nullable = false, unique = true, length = 11)
     private int id;
 
     @Column(name = "First_Name")
