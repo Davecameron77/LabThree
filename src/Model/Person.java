@@ -20,10 +20,10 @@ public class Person {
     @Column(name = "person_id", nullable = false, unique = true, length = 11)
     private int id;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private FullName name;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private FullAddress homeAddress;
 
     //region getter/setter
