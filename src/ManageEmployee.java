@@ -95,7 +95,7 @@ public class ManageEmployee {
          for (Object o : employees) {
             Employee employee = (Employee) o;
             System.out.print("First Name: " + employee.getFirstName());
-            System.out.print("  Last Name: " + employee.getLastName());
+            System.out.print("  Last Name: " + employee.getLastName() + "\n");
          }
          tx.commit();
       } catch (HibernateException e) {
