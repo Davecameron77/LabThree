@@ -17,6 +17,7 @@ public class Person {
     }
 
     @Id
+    @GeneratedValue
     @Column(name = "person_id", nullable = false, unique = true, length = 11)
     private int id;
 

@@ -32,7 +32,7 @@ public class ManageEmployee {
       addEmployee("Arya", "Stark");
       addEmployee("Bran", "Stark");
 
-//      listEmployees();
+      listEmployees();
 //      ManageEmployee ME = new ManageEmployee();
 //
 //      /* Add few employee records in database */
