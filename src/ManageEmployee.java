@@ -26,8 +26,13 @@ public class ManageEmployee {
          throw new ExceptionInInitializerError(ex);
       }
 
-      addEmployee("John", "Doe");
-      System.out.println();
+      addEmployee("Rob", "Stark");
+      addEmployee("John", "Snow");
+      addEmployee("Sansa", "Stark");
+      addEmployee("Arya", "Stark");
+      addEmployee("Bran", "Stark");
+
+//      listEmployees();
 //      ManageEmployee ME = new ManageEmployee();
 //
 //      /* Add few employee records in database */
@@ -71,7 +76,7 @@ public class ManageEmployee {
    }
    
    /* Method to  READ all the employees */
-   public void listEmployees( ){
+   public static void listEmployees( ){
       Session session = factory.openSession();
       Transaction tx = null;
       
