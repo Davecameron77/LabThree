@@ -1,13 +1,14 @@
 package Model;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "person")
 public class Person {
 
     public Person() {
-
+        name = new FullName();
+        homeAddress = new FullAddress();
     }
 
     public Person(String firstName, String lastName, String street, String city, String postalCode, String country) {
@@ -18,7 +19,6 @@ public class Person {
     @Id
     @Column(name = "person_id", nullable = false, unique = true, length = 11)
     private int id;
-
 
     @OneToOne(fetch = FetchType.LAZY)
     private FullName name;

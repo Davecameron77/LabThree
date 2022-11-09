@@ -1,8 +1,8 @@
 package Model;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
+
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @Table(name = "task")
@@ -38,8 +38,8 @@ public class Task {
     @Column(name = "comments")
     private String comments;
 
-    @ManyToMany(mappedBy = "task")
-    private List<Person> participants;
+//    @ManyToMany(mappedBy = "tasks")
+//    private List<Person> participants;
 
     //region getter/setter
 
@@ -83,13 +83,13 @@ public class Task {
         this.comments = comments;
     }
 
-    public List<Person> getParticipants() {
-        return participants;
-    }
-
-    public void setParticipants(List<Person> participants) {
-        this.participants = participants;
-    }
+//    public List<Person> getParticipants() {
+//        return participants;
+//    }
+//
+//    public void setParticipants(List<Person> participants) {
+//        this.participants = participants;
+//    }
 
     //endregion
 }

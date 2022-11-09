@@ -1,6 +1,6 @@
 package Model;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.List;
 import java.util.UUID;
 
@@ -17,11 +17,6 @@ public class Customer extends Person {
         super(firstName, lastName, street, city, postalCode, country);
         uuid = UUID.randomUUID();
     }
-
-//    @Id
-//    @GeneratedValue
-//    @Column(name = "customer_id", nullable = false, unique = true, length = 11)
-//    private int id;
 
     @Column(name = "uuid", nullable = false, unique = true, length = 11)
     private UUID uuid;
