@@ -3,7 +3,7 @@ package Model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Person")
+@Table(name = "person")
 public class Person {
 
     public Person() {
@@ -16,8 +16,9 @@ public class Person {
     }
 
     @Id
-    @Column(name = "Uuid", nullable = false, unique = true, length = 11)
+    @Column(name = "person_id", nullable = false, unique = true, length = 11)
     private int id;
+
 
     @OneToOne(fetch = FetchType.LAZY)
     private FullName name;

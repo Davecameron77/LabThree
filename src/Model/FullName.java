@@ -3,7 +3,7 @@ package Model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Full_Name")
+@Table(name = "full_name")
 public class FullName {
 
     public FullName() {
@@ -17,13 +17,13 @@ public class FullName {
 
     @Id
     @GeneratedValue
-    @Column(name = "Id", nullable = false, unique = true, length = 11)
+    @Column(name = "id", nullable = false, unique = true, length = 11)
     private int id;
 
-    @Column(name = "First_Name")
+    @Column(name = "first_name")
     private String firstName;
 
-    @Column(name = "Last_Name")
+    @Column(name = "last_name")
     private String lastName;
 
     //region getter/setter

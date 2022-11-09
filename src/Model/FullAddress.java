@@ -3,7 +3,7 @@ package Model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Full_Address")
+@Table(name = "full_address")
 public class FullAddress {
 
     public FullAddress() {
@@ -19,19 +19,19 @@ public class FullAddress {
 
     @Id
     @GeneratedValue
-    @Column(name = "Id", nullable = false, unique = true, length = 11)
+    @Column(name = "id", nullable = false, unique = true, length = 11)
     private int id;
 
-    @Column(name = "Street")
+    @Column(name = "street")
     private String street;
 
-    @Column(name = "City")
+    @Column(name = "city")
     private String city;
 
-    @Column(name = "PostalCode")
+    @Column(name = "postalCode")
     private String postalCode;
 
-    @Column(name = "Country")
+    @Column(name = "country")
     private String country;
 
     //region getter/setter

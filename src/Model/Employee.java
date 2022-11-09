@@ -1,29 +1,41 @@
 package Model;
 
 import javax.persistence.*;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
-@Table(name = "Employee")
+@Table(name = "employee")
 public class Employee extends  Person {
 
     public Employee() {
         super();
+        uuid = UUID.randomUUID();
     }
 
     public Employee(String firstName, String lastName, String street, String city, String postalCode, String country) {
         super(firstName, lastName, street, city, postalCode, country);
+        uuid = UUID.randomUUID();
     }
 
-    @Column(name = "Id", nullable = false, unique = true, length = 11)
-    private UUID id;
+//    @Id
+//    @GeneratedValue
+//    @Column(name = "employee_id", nullable = false, unique = true, length = 11)
+//    private int id;
 
-    @Column(name = "Job_Title")
+    @Column(name = "id", nullable = false, unique = true, length = 11)
+    private UUID uuid;
+
+    @Column(name = "job_title")
     private String jobTitle;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "employee")
-    private ArrayList<Task> tasks;
+    @ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(
+            name = "employee_task",
+            joinColumns = { @JoinColumn(name = "person_id") },
+            inverseJoinColumns = { @JoinColumn(name = "task_id") }
+    )
+    private List<Task> tasks;
 
     //region getter/setter
 

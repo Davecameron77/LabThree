@@ -1,16 +1,14 @@
 package Model;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
-@Table(name = "Task")
+@Table(name = "task")
 public class Task {
 
-    public Task() {
-        participants = new ArrayList<>();
-    }
+    public Task() { }
 
     public Task(Date startDatetime, int duration, String serviceType, String status, String comments) {
         this.startDatetime = startDatetime;
@@ -18,32 +16,30 @@ public class Task {
         this.serviceType = serviceType;
         this.status = status;
         this.comments = comments;
-
-        participants = new ArrayList<>();
     }
 
     @Id
     @GeneratedValue
-    @Column(name = "Id", nullable = false, unique = true, length = 11)
+    @Column(name = "task_id", nullable = false, unique = true, length = 11)
     private int id;
 
-    @Column(name = "Start_Datetime")
+    @Column(name = "start_datetime")
     private Date startDatetime;
 
-    @Column(name = "Duration")
+    @Column(name = "duration")
     private int duration;
 
-    @Column(name = "Service_Type")
+    @Column(name = "service_type")
     private String serviceType;
 
-    @Column(name = "Status")
+    @Column(name = "status")
     private String status;
 
-    @Column(name = "Comments")
+    @Column(name = "comments")
     private String comments;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "person")
-    private ArrayList<Person> participants;
+    @ManyToMany(mappedBy = "task")
+    private List<Person> participants;
 
     //region getter/setter
 
@@ -87,11 +83,11 @@ public class Task {
         this.comments = comments;
     }
 
-    public ArrayList<Person> getParticipants() {
+    public List<Person> getParticipants() {
         return participants;
     }
 
-    public void setParticipants(ArrayList<Person> participants) {
+    public void setParticipants(List<Person> participants) {
         this.participants = participants;
     }
 
