@@ -18,7 +18,7 @@ public class Customer extends Person {
         uuid = UUID.randomUUID();
     }
 
-    @Column(name = "uuid", nullable = false, unique = true, length = 11)
+    @Column(name = "uuid", nullable = false, unique = true, length = 16)
     private UUID uuid;
 
     @ManyToMany(cascade = { CascadeType.ALL })

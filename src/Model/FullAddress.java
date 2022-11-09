@@ -7,7 +7,10 @@ import jakarta.persistence.*;
 public class FullAddress {
 
     public FullAddress() {
-
+        this.street = "";
+        this.city = "";
+        this.postalCode = "";
+        this.country = "";
     }
 
     public FullAddress(String street, String city, String postalCode, String country) {

@@ -7,7 +7,8 @@ import jakarta.persistence.*;
 public class FullName {
 
     public FullName() {
-
+        this.firstName = "";
+        this.lastName = "";
     }
 
     public FullName(String firstName, String lastName) {

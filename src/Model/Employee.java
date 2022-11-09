@@ -18,7 +18,7 @@ public class Employee extends  Person {
         uuid = UUID.randomUUID();
     }
 
-    @Column(name = "id", nullable = false, unique = true, length = 11)
+    @Column(name = "uuid", nullable = true, unique = true, length = 16)
     private UUID uuid;
 
     @Column(name = "job_title")
