@@ -32,6 +32,10 @@ public class ManageEmployee {
       addEmployee("Arya", "Stark");
       addEmployee("Bran", "Stark");
 
+      System.out.println("");
+      System.out.println("*******************************************************");
+      System.out.println("");
+
       listEmployees();
 //      ManageEmployee ME = new ManageEmployee();
 //
@@ -67,6 +71,7 @@ public class ManageEmployee {
          employee.setLastName(lastName);
          session.persist(employee);
          tx.commit();
+         System.out.println("Created employee: " + employee.getFirstName() + " " + employee.getLastName());
       } catch (HibernateException e) {
          if (tx!=null) tx.rollback();
          e.printStackTrace(); 
@@ -82,8 +87,11 @@ public class ManageEmployee {
       
       try {
          tx = session.beginTransaction();
-         String query = "FROM EMPLOYEE WHERE 1=1";
+         String query = "FROM Model.Employee WHERE 1=1";
          List employees = session.createQuery(query).list();
+         System.out.println("*******************************************************");
+         System.out.println("Listing current employees");
+         System.out.println("*******************************************************");
          for (Object o : employees) {
             Employee employee = (Employee) o;
             System.out.print("First Name: " + employee.getFirstName());
