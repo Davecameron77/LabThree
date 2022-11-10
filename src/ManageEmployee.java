@@ -32,9 +32,12 @@ public class ManageEmployee {
       addEmployee("Arya", "Stark");
       addEmployee("Bran", "Stark");
 
-      System.out.println("");
       System.out.println("*******************************************************");
-      System.out.println("");
+      System.out.println("Updating employees");
+      System.out.println("*******************************************************");
+      updateEmployee(1);
+      updateEmployee(2);
+      System.out.println();
 
       listEmployees();
 //      ManageEmployee ME = new ManageEmployee();
@@ -96,6 +99,16 @@ public class ManageEmployee {
             Employee employee = (Employee) o;
             System.out.print("First Name: " + employee.getFirstName());
             System.out.print("  Last Name: " + employee.getLastName() + "\n");
+            System.out.print("Tasks: ");
+            List<Task> employeeTasks = employee.getTasks();
+            if (!employeeTasks.isEmpty()) {
+               for (Task task : employeeTasks) {
+                  System.out.print(task.getServiceType() + ", ");
+               }
+               System.out.print("\n");
+            } else {
+               System.out.print("None Assigned\n");
+            }
          }
          tx.commit();
       } catch (HibernateException e) {
@@ -107,13 +120,26 @@ public class ManageEmployee {
    }
    
    /* Method to UPDATE salary for an employee */
-   public void updateEmployee(Integer EmployeeID, int salary ){
+   public static void updateEmployee(Integer EmployeeID){
       Session session = factory.openSession();
       Transaction tx = null;
       
       try {
          tx = session.beginTransaction();
          Employee employee = session.get(Employee.class, EmployeeID);
+
+         Task newTask = new Task();
+         newTask.setServiceType("Food preparation");
+         newTask.setDuration(1);
+         employee.addTask(newTask);
+
+         Task newTaskTwo = new Task();
+         newTaskTwo.setServiceType("Nursing");
+         newTaskTwo.setDuration(2);
+         employee.addTask(newTaskTwo);
+
+         System.out.println("Assigned tasks Food Preperation and Nursing to " + employee.getFirstName() + " " + employee.getLastName());
+
 		 session.persist(employee);
          tx.commit();
       } catch (HibernateException e) {
