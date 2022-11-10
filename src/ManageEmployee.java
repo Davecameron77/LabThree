@@ -26,11 +26,15 @@ public class ManageEmployee {
          throw new ExceptionInInitializerError(ex);
       }
 
+      System.out.println("*******************************************************");
+      System.out.println("Creating employees");
+      System.out.println("*******************************************************");
       addEmployee("Rob", "Stark");
       addEmployee("John", "Snow");
       addEmployee("Sansa", "Stark");
       addEmployee("Arya", "Stark");
       addEmployee("Bran", "Stark");
+      System.out.println();
 
       System.out.println("*******************************************************");
       System.out.println("Updating employees");
@@ -39,25 +43,17 @@ public class ManageEmployee {
       updateEmployee(2);
       System.out.println();
 
+      System.out.println("*******************************************************");
+      System.out.println("Listing employees");
+      System.out.println("*******************************************************");
       listEmployees();
-//      ManageEmployee ME = new ManageEmployee();
-//
-//      /* Add few employee records in database */
-//      Integer empID1 = ME.addEmployee("Zara", "Ali");
-//      Integer empID2 = ME.addEmployee("Daisy", "Das");
-//      Integer empID3 = ME.addEmployee("John", "Paul");
-//
-//      /* List down all the employees */
-//      ME.listEmployees();
-//
-//      /* Update employee's records */
-//      ME.updateEmployee(empID1, 5000);
-//
-//      /* Delete an employee from the database */
-//      ME.deleteEmployee(empID2);
-//
-//      /* List down new list of the employees */
-//      ME.listEmployees();
+      System.out.println();
+
+      System.out.println("*******************************************************");
+      System.out.println("Deleting employees");
+      System.out.println("*******************************************************");
+      deleteEmployee(4);
+      deleteEmployee(5);
    }
 
    private static SessionFactory factory;
@@ -92,9 +88,6 @@ public class ManageEmployee {
          tx = session.beginTransaction();
          String query = "FROM Model.Employee WHERE 1=1";
          List employees = session.createQuery(query).list();
-         System.out.println("*******************************************************");
-         System.out.println("Listing current employees");
-         System.out.println("*******************************************************");
          for (Object o : employees) {
             Employee employee = (Employee) o;
             System.out.print("First Name: " + employee.getFirstName());
@@ -151,7 +144,7 @@ public class ManageEmployee {
    }
    
    /* Method to DELETE an employee from the records */
-   public void deleteEmployee(Integer EmployeeID){
+   public static void deleteEmployee(Integer EmployeeID){
       Session session = factory.openSession();
       Transaction tx = null;
       
@@ -160,6 +153,7 @@ public class ManageEmployee {
          Employee employee = session.get(Employee.class, EmployeeID);
          session.remove(employee);
          tx.commit();
+         System.out.println("Deleted " + employee.getFirstName() + employee.getLastName());
       } catch (HibernateException e) {
          if (tx!=null) tx.rollback();
          e.printStackTrace(); 
